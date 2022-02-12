@@ -1,0 +1,709 @@
+Started GET "/" for ::1 at 2022-02-12 13:50:02 +0200
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 2 pending migrations:
+
+20220212112545_create_users.rb
+20220212112616_create_items.rb
+
+
+):
+  
+activerecord (7.0.2.2) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.2.2) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.2.2) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.2.2) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.2.2) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.2.2) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.2.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.2.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.2.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.2.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.2.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.2.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.2.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.2.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.2) lib/puma/configuration.rb:252:in `call'
+puma (5.6.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.2) lib/puma/server.rb:441:in `process_client'
+puma (5.6.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220212112545)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220212112545"]]
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateItems (20220212112616)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220212112616"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangePrice (20220212115136)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aitems" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aitems" ("id","name","price","created_at","updated_at")
+                     SELECT "id","name","price","created_at","updated_at" FROM "items"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "items" ("id","name","price","created_at","updated_at")
+                     SELECT "id","name","price","created_at","updated_at" FROM "aitems"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aitems"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220212115136"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-02-12 11:53:49.773323"], ["updated_at", "2022-02-12 11:53:49.773323"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangePrice (20220212115448)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aitems" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aitems" ("id","name","price","created_at","updated_at")
+                     SELECT "id","name","price","created_at","updated_at" FROM "items"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "items" ("id","name","price","created_at","updated_at")
+                     SELECT "id","name","price","created_at","updated_at" FROM "aitems"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aitems"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220212115448"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2022-02-12 13:56:33 +0200
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.2ms | Allocations: 736)
+Completed 200 OK in 35ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 6935)
+
+
+Started GET "/users" for ::1 at 2022-02-12 13:56:47 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1636)
+  Rendered layout layouts/application.html.erb (Duration: 570.2ms | Allocations: 102961)
+Completed 200 OK in 584ms (Views: 574.6ms | ActiveRecord: 0.2ms | Allocations: 105149)
+
+
+Started GET "/users/new" for ::1 at 2022-02-12 13:56:50 +0200
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 64.5ms | Allocations: 5480)
+  Rendered users/new.html.erb within layouts/application (Duration: 67.5ms | Allocations: 5863)
+  Rendered layout layouts/application.html.erb (Duration: 76.5ms | Allocations: 8138)
+Completed 200 OK in 89ms (Views: 78.0ms | ActiveRecord: 0.8ms | Allocations: 13313)
+
+
+Started POST "/users" for ::1 at 2022-02-12 13:57:02 +0200
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"ahmed", "email"=>"ahmed@gmail.com"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "ahmed"], ["email", "ahmed@gmail.com"], ["created_at", "2022-02-12 11:57:02.579318"], ["updated_at", "2022-02-12 11:57:02.579318"]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 2.1ms | Allocations: 246)
+  Rendered layout layouts/mailer.html.erb (Duration: 3.5ms | Allocations: 497)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 5.6ms | Allocations: 172)
+  Rendered layout layouts/mailer.text.erb (Duration: 6.9ms | Allocations: 378)
+UserMailer#new_user_mailer: processed outbound mail in 26.1ms
+Delivered mail 6207a08ebbf64_22c434e49671b@Madyy.mail (138.0ms)
+Date: Sat, 12 Feb 2022 13:57:02 +0200
+From: from@example.com
+To: ahmed@marsool.com
+Message-ID: <6207a08ebbf64_22c434e49671b@Madyy.mail>
+Subject: You got a new User!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6207a08eb6fbf_22c434e49664f";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_6207a08eb6fbf_22c434e49664f
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello ahmed!
+===============================================
+
+Account details:
+--------------------------
+
+Name: ahmed
+Email: ahmed@gmail.com
+
+----==_mimepart_6207a08eb6fbf_22c434e49664f
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello ahmed!</p>
+    <p>
+    Account details<br>
+    --------------------------
+    </p>
+    <p>Name: ahmed</p>
+    <p>Email: ahmed@gmail.com</p>
+    
+    <p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_6207a08eb6fbf_22c434e49664f--
+
+Redirected to http://[::1]:3000/users/1
+Completed 302 Found in 321ms (ActiveRecord: 5.4ms | Allocations: 54868)
+
+
+Started GET "/users/1" for ::1 at 2022-02-12 13:57:02 +0200
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:65:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.9ms | Allocations: 255)
+  Rendered users/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1895)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 4149)
+Completed 200 OK in 24ms (Views: 17.1ms | ActiveRecord: 0.2ms | Allocations: 7295)
+
+
+Started GET "/users" for ::1 at 2022-02-12 13:57:09 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1275)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3444)
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 0.1ms | Allocations: 3849)
+
+
+Started GET "/items" for ::1 at 2022-02-12 13:57:30 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1510)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 3876)
+Completed 200 OK in 21ms (Views: 13.6ms | ActiveRecord: 0.2ms | Allocations: 5493)
+
+
+Started GET "/items/new" for ::1 at 2022-02-12 13:57:32 +0200
+Processing by ItemsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (Duration: 2.2ms | Allocations: 1647)
+  Rendered items/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1967)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 4120)
+Completed 200 OK in 19ms (Views: 12.3ms | ActiveRecord: 0.9ms | Allocations: 7299)
+
+
+Started POST "/items" for ::1 at 2022-02-12 13:57:39 +0200
+Processing by ItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "item"=>{"name"=>"shoe", "price"=>"55"}, "commit"=>"Create Item"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mItem Create (0.6ms)[0m  [1m[32mINSERT INTO "items" ("name", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "shoe"], ["price", 55], ["created_at", "2022-02-12 11:57:39.506124"], ["updated_at", "2022-02-12 11:57:39.506124"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering item_mailer/new_item_mailer.html.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.html.erb within layouts/mailer (Duration: 6.5ms | Allocations: 242)
+  Rendered layout layouts/mailer.html.erb (Duration: 7.3ms | Allocations: 351)
+  Rendering layout layouts/mailer.text.erb
+  Rendering item_mailer/new_item_mailer.text.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.text.erb within layouts/mailer (Duration: 2.0ms | Allocations: 167)
+  Rendered layout layouts/mailer.text.erb (Duration: 2.8ms | Allocations: 262)
+ItemMailer#new_item_mailer: processed outbound mail in 15.9ms
+Delivered mail 6207a0b38d2e9_22c434e496933@Madyy.mail (78.5ms)
+Date: Sat, 12 Feb 2022 13:57:39 +0200
+From: from@example.com
+To: ahmed@marsool.com
+Message-ID: <6207a0b38d2e9_22c434e496933@Madyy.mail>
+Subject: You got a new Item!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6207a0b38c9bc_22c434e4968d0";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_6207a0b38c9bc_22c434e4968d0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello shoe!
+===============================================
+
+Account details:
+--------------------------
+
+Name: shoe
+Email: 55
+
+----==_mimepart_6207a0b38c9bc_22c434e4968d0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello shoe!</p>
+    <p>
+    Account details<br>
+    --------------------------
+    </p>
+    <p>Name: shoe</p>
+    <p>Email: 55</p>
+    
+    <p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_6207a0b38c9bc_22c434e4968d0--
+
+Redirected to http://[::1]:3000/items/1
+Completed 302 Found in 160ms (ActiveRecord: 5.0ms | Allocations: 22957)
+
+
+Started GET "/items/1" for ::1 at 2022-02-12 13:57:39 +0200
+Processing by ItemsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:65:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/_item.html.erb (Duration: 8.5ms | Allocations: 201)
+  Rendered items/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 1380)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 3636)
+Completed 200 OK in 23ms (Views: 18.5ms | ActiveRecord: 0.2ms | Allocations: 5302)
+
+
+Started GET "/items" for ::1 at 2022-02-12 13:57:42 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1137)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3303)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.1ms | Allocations: 3666)
+
+
+Started GET "/rails/mailers/user_mailer" for ::1 at 2022-02-12 13:59:06 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer"}
+  Rendering layout C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/layouts/application.html.erb
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1005)
+  Rendered layout C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/layouts/application.html.erb (Duration: 2.9ms | Allocations: 1357)
+Completed 200 OK in 21ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 3147)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer" for ::1 at 2022-02-12 13:59:10 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.9ms | Allocations: 240)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.4ms | Allocations: 489)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.9ms | Allocations: 166)
+  Rendered layout layouts/mailer.text.erb (Duration: 2.2ms | Allocations: 372)
+UserMailer#new_user_mailer: processed outbound mail in 11.6ms
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/email.html.erb (Duration: 4.2ms | Allocations: 8455)
+Completed 200 OK in 23ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 21966)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer?part=text%2Fhtml" for ::1 at 2022-02-12 13:59:10 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.9ms | Allocations: 124)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 6.4ms
+  Rendering text template
+  Rendered text template (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 16ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 11524)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer?part=text%2Fplain" for ::1 at 2022-02-12 13:59:35 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.9ms | Allocations: 127)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 5.7ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 11220)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer.txt?part=text%2Fhtml" for ::1 at 2022-02-12 13:59:40 +0200
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.9ms | Allocations: 120)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 6.1ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 11077)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer.html" for ::1 at 2022-02-12 14:01:24 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/new_user_mailer"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ test/mailers/previews/user_mailer_preview.rb:4:in `new_user_mailer'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.1ms | Allocations: 147)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 14)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.8ms | Allocations: 109)
+UserMailer#new_user_mailer: processed outbound mail in 6.8ms
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/email.html.erb (Duration: 2.6ms | Allocations: 7116)
+Completed 200 OK in 46ms (Views: 3.8ms | ActiveRecord: 1.0ms | Allocations: 24722)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer.html?part=text%2Fhtml" for ::1 at 2022-02-12 14:01:24 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.8ms | Allocations: 120)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 5.7ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 11123)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer.html?part=text%2Fplain" for ::1 at 2022-02-12 14:01:55 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.0ms | Allocations: 120)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 5.5ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 11041)
+
+
+Started GET "/rails/mailers/user_mailer/new_user_mailer.txt?part=text%2Fhtml" for ::1 at 2022-02-12 14:01:59 +0200
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/new_user_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.0ms | Allocations: 120)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.8ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 5.5ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Completed 200 OK in 16ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 11085)
+
+
+Started GET "/rails/mailers/item_mailer/new_item_mailer" for ::1 at 2022-02-12 14:03:48 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"item_mailer/new_item_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering item_mailer/new_item_mailer.html.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.html.erb within layouts/mailer (Duration: 1.8ms | Allocations: 246)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.7ms | Allocations: 355)
+  Rendering layout layouts/mailer.text.erb
+  Rendering item_mailer/new_item_mailer.text.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.text.erb within layouts/mailer (Duration: 0.7ms | Allocations: 167)
+  Rendered layout layouts/mailer.text.erb (Duration: 1.5ms | Allocations: 262)
+ItemMailer#new_item_mailer: processed outbound mail in 10.6ms
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/email.html.erb (Duration: 2.2ms | Allocations: 7119)
+Completed 200 OK in 56ms (Views: 3.1ms | ActiveRecord: 0.6ms | Allocations: 25965)
+
+
+Started GET "/rails/mailers/item_mailer/new_item_mailer?part=text%2Fhtml" for ::1 at 2022-02-12 14:03:48 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"item_mailer/new_item_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering item_mailer/new_item_mailer.html.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.7ms | Allocations: 120)
+  Rendering layout layouts/mailer.text.erb
+  Rendering item_mailer/new_item_mailer.text.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.text.erb within layouts/mailer (Duration: 0.1ms | Allocations: 14)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 108)
+ItemMailer#new_item_mailer: processed outbound mail in 5.2ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 11109)
+
+
+Started GET "/users" for ::1 at 2022-02-12 14:05:26 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.8ms | Allocations: 209)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2037)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 16312)
+Completed 200 OK in 38ms (Views: 35.2ms | ActiveRecord: 0.2ms | Allocations: 17643)
+
+
+Started GET "/users/new" for ::1 at 2022-02-12 14:05:30 +0200
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 2.1ms | Allocations: 1576)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1889)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 4042)
+Completed 200 OK in 14ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 4485)
+
+
+Started POST "/users" for ::1 at 2022-02-12 14:05:39 +0200
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"Sarah", "email"=>"sarah@gmail.com"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sarah"], ["email", "sarah@gmail.com"], ["created_at", "2022-02-12 12:05:39.501679"], ["updated_at", "2022-02-12 12:05:39.501679"]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/new_user_mailer.html.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 25)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.8ms | Allocations: 123)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/new_user_mailer.text.erb within layouts/mailer
+  Rendered user_mailer/new_user_mailer.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 107)
+UserMailer#new_user_mailer: processed outbound mail in 4.8ms
+Delivered mail 6207a2937e8d9_22c4350c9811@Madyy.mail (79.5ms)
+Date: Sat, 12 Feb 2022 14:05:39 +0200
+From: from@example.com
+To: ahmed@marsool.com
+Message-ID: <6207a2937e8d9_22c4350c9811@Madyy.mail>
+Subject: You got a new User!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6207a2937dfd1_22c4350c98034";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_6207a2937dfd1_22c4350c98034
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello Sarah!
+===============================================
+
+Account details:
+--------------------------
+
+Name: Sarah
+Email: sarah@gmail.com
+
+----==_mimepart_6207a2937dfd1_22c4350c98034
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello Sarah!</p>
+    <p>
+    Account details<br>
+    --------------------------
+    </p>
+    <p>Name: Sarah</p>
+    <p>Email: sarah@gmail.com</p>
+    
+    <p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_6207a2937dfd1_22c4350c98034--
+
+Redirected to http://[::1]:3000/users/2
+Completed 302 Found in 116ms (ActiveRecord: 6.0ms | Allocations: 17093)
+
+
+Started GET "/users/2" for ::1 at 2022-02-12 14:05:39 +0200
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:65:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 997)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 3142)
+Completed 200 OK in 13ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 4727)
+
+
+Started GET "/users" for ::1 at 2022-02-12 14:05:41 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered users/_user.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1308)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3474)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 3837)
+
+
