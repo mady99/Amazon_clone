@@ -26,6 +26,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         UserMailer.with(user: @user).new_user_mailer.deliver_now
+        SendMailJob.perform_later(@user)
+        DailySummaryJob.perform_later(@user)
 
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
