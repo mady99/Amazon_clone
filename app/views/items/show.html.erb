@@ -1,5 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
+<%= image_tag(@item.cover, size: "200x200") %>
+  <%= link_to "Delete" %>
+  <%# , delete_attachment_items_url(@item.cover.id), method: :delete %>
+
+  <% @item.uploads.each do |i| %>
+    <%= image_tag(i, size: "200x200") %>
+    <%= link_to "Delete" %>
+    <%# , delete_attachment_items_url(i) %>
+  <% end %>
+
 <%= render @item %>
 
 <div>

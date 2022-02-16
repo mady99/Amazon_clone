@@ -1911,3 +1911,2202 @@ Processing by ItemsController#index as HTML
 Completed 200 OK in 27ms (Views: 22.3ms | ActiveRecord: 0.8ms | Allocations: 8910)
 
 
+Started GET "/items/new" for ::1 at 2022-02-14 18:23:13 +0200
+Processing by ItemsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/items_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (Duration: 9.8ms | Allocations: 3695)
+  Rendered items/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 4083)
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 18302)
+Completed 200 OK in 46ms (Views: 39.2ms | ActiveRecord: 0.3ms | Allocations: 21959)
+
+
+Started POST "/items" for ::1 at 2022-02-14 18:23:22 +0200
+Processing by ItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "item"=>{"name"=>"belt", "price"=>"30"}, "commit"=>"Create Item"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mItem Create (0.9ms)[0m  [1m[32mINSERT INTO "items" ("name", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "belt"], ["price", 30], ["created_at", "2022-02-14 16:23:23.009178"], ["updated_at", "2022-02-14 16:23:23.009178"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering item_mailer/new_item_mailer.html.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 249)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.1ms | Allocations: 504)
+  Rendering layout layouts/mailer.text.erb
+  Rendering item_mailer/new_item_mailer.text.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.text.erb within layouts/mailer (Duration: 0.6ms | Allocations: 173)
+  Rendered layout layouts/mailer.text.erb (Duration: 1.6ms | Allocations: 378)
+ItemMailer#new_item_mailer: processed outbound mail in 11.3ms
+Delivered mail 620a81fb1510a_54a43520687b6@Madyy.mail (87.7ms)
+Date: Mon, 14 Feb 2022 18:23:23 +0200
+From: from@example.com
+To: ahmed@marsool.com
+Message-ID: <620a81fb1510a_54a43520687b6@Madyy.mail>
+Subject: You got a new Item!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_620a81fb1406e_54a435206865";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_620a81fb1406e_54a435206865
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello belt!
+===============================================
+
+Account details:
+--------------------------
+
+Name: belt
+Email: 30
+
+----==_mimepart_620a81fb1406e_54a435206865
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello belt!</p>
+    <p>
+    Account details<br>
+    --------------------------
+    </p>
+    <p>Name: belt</p>
+    <p>Email: 30</p>
+    
+    <p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_620a81fb1406e_54a435206865--
+
+[ActiveJob] Enqueued DailySummaryJob (Job ID: 0103d504-112c-403e-8e11-d51e2b39a5eb) to Async(default) with arguments: #<GlobalID:0x0000017ff00d7fc0 @uri=#<URI::GID gid://amazon-clone/Item/3>>
+Redirected to http://[::1]:3000/items/3
+Completed 302 Found in 184ms (ActiveRecord: 5.4ms | Allocations: 51297)
+
+
+Started GET "/items/3" for ::1 at 2022-02-14 18:23:23 +0200
+[ActiveJob] [DailySummaryJob] [0103d504-112c-403e-8e11-d51e2b39a5eb]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [DailySummaryJob] [0103d504-112c-403e-8e11-d51e2b39a5eb] Performing DailySummaryJob (Job ID: 0103d504-112c-403e-8e11-d51e2b39a5eb) from Async(default) enqueued at 2022-02-14T16:23:23Z with arguments: #<GlobalID:0x0000017ff05987d0 @uri=#<URI::GID gid://amazon-clone/Item/3>>
+[ActiveJob] [DailySummaryJob] [0103d504-112c-403e-8e11-d51e2b39a5eb] Error performing DailySummaryJob (Job ID: 0103d504-112c-403e-8e11-d51e2b39a5eb) from Async(default) in 5.9ms: ArgumentError (wrong number of arguments (given 1, expected 0)):
+C:/Users/20114/Desktop/Amazon_clone/app/jobs/daily_summary_job.rb:4:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:59:in `block in _perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/i18n-1.9.1/lib/i18n.rb:328:in `with_locale'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:138:in `run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:58:in `_perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:20:in `_perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:46:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:25:in `block in instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications.rb:206:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:35:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:14:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:18:in `block in perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:37:in `tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:99:in `tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:25:in `tag_logger'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:18:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:24:in `block in execute'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/reloader.rb:72:in `block in wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/reloader.rb:71:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:138:in `run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:22:in `execute'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Processing by ItemsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:66:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/_item.html.erb (Duration: 0.6ms | Allocations: 211)
+  Rendered items/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1502)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 3765)
+Completed 200 OK in 15ms (Views: 10.3ms | ActiveRecord: 0.1ms | Allocations: 5474)
+
+
+Started GET "/rails/mailers/daily_mailer" for ::1 at 2022-02-14 18:26:00 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer"}
+  Rendering layout C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/layouts/application.html.erb
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application (Duration: 13.4ms | Allocations: 1011)
+  Rendered layout C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/layouts/application.html.erb (Duration: 21.6ms | Allocations: 1363)
+Completed 200 OK in 62ms (Views: 27.7ms | ActiveRecord: 0.0ms | Allocations: 3304)
+
+
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:26:03 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 3903)
+
+
+  
+NoMethodError (undefined method `mail' for DailyMailer:Class):
+  
+app/mailers/daily_mailer.rb:4:in `<class:DailyMailer>'
+app/mailers/daily_mailer.rb:1:in `<main>'
+test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:27:53 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+Completed 500 Internal Server Error in 15ms (Allocations: 3546)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:28:24 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+DailyMailer#daily_mailer: processed outbound mail in 2.3ms
+Completed 500 Internal Server Error in 30ms (Allocations: 5876)
+
+
+  
+ActionView::MissingTemplate (Missing template daily_mailer/daily_mailer with "mailer".
+
+Searched in:
+  * "daily_mailer"
+):
+  
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:34:35 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 8.6ms | Allocations: 1759)
+  Rendered layout layouts/mailer.html.erb (Duration: 9.4ms | Allocations: 1847)
+DailyMailer#daily_mailer: processed outbound mail in 13.9ms
+Completed 500 Internal Server Error in 17ms (Allocations: 4532)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:35:46 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 1.2ms | Allocations: 1507)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.3ms | Allocations: 1595)
+DailyMailer#daily_mailer: processed outbound mail in 4.5ms
+Completed 500 Internal Server Error in 34ms (Allocations: 7084)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:39:56 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 1.1ms | Allocations: 1507)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.8ms | Allocations: 1595)
+DailyMailer#daily_mailer: processed outbound mail in 3.9ms
+Completed 500 Internal Server Error in 35ms (Allocations: 7124)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:39:59 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 0.9ms | Allocations: 1487)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.8ms | Allocations: 1569)
+DailyMailer#daily_mailer: processed outbound mail in 3.2ms
+Completed 500 Internal Server Error in 7ms (Allocations: 3386)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:44:00 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 1.0ms | Allocations: 1510)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.8ms | Allocations: 1599)
+DailyMailer#daily_mailer: processed outbound mail in 4.6ms
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 1.8ms | Allocations: 11791)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:44:05 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 1.1ms | Allocations: 1487)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.9ms | Allocations: 1569)
+DailyMailer#daily_mailer: processed outbound mail in 3.4ms
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3441)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:44:09 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 0.9ms | Allocations: 1487)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.7ms | Allocations: 1569)
+DailyMailer#daily_mailer: processed outbound mail in 3.1ms
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3360)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:44:32 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 1510)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.5ms | Allocations: 1598)
+DailyMailer#daily_mailer: processed outbound mail in 4.3ms
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.7ms | Allocations: 11741)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:44:46 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 1.4ms | Allocations: 1510)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.9ms | Allocations: 1598)
+DailyMailer#daily_mailer: processed outbound mail in 5.3ms
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 1.7ms | Allocations: 11774)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:45:45 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 7.8ms | Allocations: 1751)
+  Rendered layout layouts/mailer.html.erb (Duration: 8.8ms | Allocations: 1839)
+DailyMailer#daily_mailer: processed outbound mail in 12.8ms
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 1.8ms | Allocations: 12407)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user2.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:48:08 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ test/mailers/previews/daily_mailer_preview.rb:4:in `daily_mailer'
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 3.0ms | Allocations: 1749)
+  Rendered layout layouts/mailer.html.erb (Duration: 3.6ms | Allocations: 1837)
+DailyMailer#daily_mailer: processed outbound mail in 8.2ms
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 1.7ms | Allocations: 12457)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:48:14 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 1.0ms | Allocations: 1487)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.8ms | Allocations: 1569)
+DailyMailer#daily_mailer: processed outbound mail in 3.6ms
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3446)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @user.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:52:42 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 9.5ms | Allocations: 1743)
+  Rendered layout layouts/mailer.html.erb (Duration: 10.4ms | Allocations: 1831)
+DailyMailer#daily_mailer: processed outbound mail in 15.6ms
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 4521)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @item.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/rails/mailers/daily_mailer/daily_mailer" for ::1 at 2022-02-14 18:59:52 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"daily_mailer/daily_mailer"}
+  Rendering layout layouts/mailer.html.erb
+  Rendering daily_mailer/daily_mailer.html.erb within layouts/mailer
+  Rendered daily_mailer/daily_mailer.html.erb within layouts/mailer (Duration: 3.5ms | Allocations: 1743)
+  Rendered layout layouts/mailer.html.erb (Duration: 4.3ms | Allocations: 1831)
+DailyMailer#daily_mailer: processed outbound mail in 9.1ms
+Completed 500 Internal Server Error in 12ms (Allocations: 4595)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    5:   </head>
+    6:   <body>
+    7:     <p>Hello <%= @item.name %>!</p>
+    8:     <p>
+    9:     Account details<br>
+   10:     --------------------------
+  
+app/views/daily_mailer/daily_mailer.html.erb:7
+app/mailers/daily_mailer.rb:5:in `daily_mailer'
+Started GET "/" for ::1 at 2022-02-16 16:24:08 +0200
+  [1m[35m (12.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20220216141058_create_active_storage_tables.active_storage.rb
+
+
+):
+  
+activerecord (7.0.2.2) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.2.2) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.2.2) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.2.2) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.2.2) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.2.2) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.2.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.2.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.2.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.2.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.2.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.2.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.2.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.2.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.2) lib/puma/configuration.rb:252:in `call'
+puma (5.6.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.2) lib/puma/server.rb:441:in `process_client'
+puma (5.6.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20220216141058)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220216141058"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2022-02-16 16:24:37 +0200
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 20.8ms | Allocations: 735)
+Completed 200 OK in 82ms (Views: 25.1ms | ActiveRecord: 0.0ms | Allocations: 6464)
+
+
+Started GET "/items" for ::1 at 2022-02-16 16:24:46 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/_item.html.erb:12
+  Rendered items/_item.html.erb (Duration: 119.8ms | Allocations: 16739)
+  Rendered items/index.html.erb within layouts/application (Duration: 152.7ms | Allocations: 23197)
+  Rendered layout layouts/application.html.erb (Duration: 153.5ms | Allocations: 23288)
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 1.5ms | Allocations: 31948)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+     9:     <%= item.price %>
+    10:   </p>
+    11: 
+    12:   <%= image_tag(item.cover, size: "200x200") %>
+    13:   <%= link_to "Delete", delet_attachment_item_url(item.cover.id) %>
+    14: 
+    15:   <% item.uploads.each do |i| %>
+  
+app/views/items/_item.html.erb:12
+app/views/items/index.html.erb:7
+app/views/items/index.html.erb:6
+Started GET "/items" for ::1 at 2022-02-16 16:26:05 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 7.5ms | Allocations: 218)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 2313)
+  Rendered layout layouts/application.html.erb (Duration: 529.7ms | Allocations: 38804)
+Completed 200 OK in 537ms (Views: 534.4ms | ActiveRecord: 0.2ms | Allocations: 40017)
+
+
+Started GET "/items/1" for ::1 at 2022-02-16 16:26:08 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/show.html.erb within layouts/application (Duration: 8.0ms | Allocations: 1051)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 3197)
+Completed 200 OK in 22ms (Views: 16.4ms | ActiveRecord: 0.2ms | Allocations: 4856)
+
+
+Started GET "/items" for ::1 at 2022-02-16 16:26:10 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1480)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 3646)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.2ms | Allocations: 4009)
+
+
+Started GET "/items/new" for ::1 at 2022-02-16 16:26:11 +0200
+Processing by ItemsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (Duration: 199.5ms | Allocations: 10353)
+  Rendered items/new.html.erb within layouts/application (Duration: 209.5ms | Allocations: 10691)
+  Rendered layout layouts/application.html.erb (Duration: 216.7ms | Allocations: 12957)
+Completed 200 OK in 222ms (Views: 218.0ms | ActiveRecord: 0.0ms | Allocations: 13432)
+
+
+Started GET "/items" for ::1 at 2022-02-16 16:26:20 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 30)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1572)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3740)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.1ms | Allocations: 4152)
+
+
+Started GET "/items/new" for ::1 at 2022-02-16 16:26:22 +0200
+Processing by ItemsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (Duration: 1.9ms | Allocations: 1565)
+  Rendered items/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1665)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3818)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 4188)
+
+
+Started POST "/items" for ::1 at 2022-02-16 16:26:47 +0200
+Processing by ItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "item"=>{"name"=>"phone", "price"=>"1000", "cover"=>#<ActionDispatch::Http::UploadedFile:0x000001f632998660 @tempfile=#<Tempfile:C:/Users/20114/AppData/Local/Temp/RackMultipart20220216-20564-31blw6.jpg>, @original_filename="download.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"item[cover]\"; filename=\"download.jpg\"\r\nContent-Type: image/jpeg\r\n">, "uploads"=>["", #<ActionDispatch::Http::UploadedFile:0x000001f632998548 @tempfile=#<Tempfile:C:/Users/20114/AppData/Local/Temp/RackMultipart20220216-20564-fash7w.png>, @original_filename="Screenshot (45).png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"item[uploads][]\"; filename=\"Screenshot (45).png\"\r\nContent-Type: image/png\r\n">]}, "commit"=>"Create Item"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mItem Create (1.0ms)[0m  [1m[32mINSERT INTO "items" ("name", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "phone"], ["price", 1000], ["created_at", "2022-02-16 14:26:47.924684"], ["updated_at", "2022-02-16 14:26:47.924684"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "tnygkf8jfv5rt7t76n4c4z0lov4s"], ["filename", "download.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 6109], ["checksum", "46haBEjXhf6B1sDk2sOMUg=="], ["created_at", "2022-02-16 14:26:48.000160"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cover"], ["record_type", "Item"], ["record_id", 4], ["blob_id", 1], ["created_at", "2022-02-16 14:26:48.003112"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Blob Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "q9th38pahcuwyz27j3zmssiun8gm"], ["filename", "Screenshot (45).png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 268950], ["checksum", "HBXeNCwZZGx9HaeYKLtzmg=="], ["created_at", "2022-02-16 14:26:48.007370"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "uploads"], ["record_type", "Item"], ["record_id", 4], ["blob_id", 2], ["created_at", "2022-02-16 14:26:48.010031"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mItem Update (0.1ms)[0m  [1m[33mUPDATE "items" SET "updated_at" = ? WHERE "items"."id" = ?[0m  [["updated_at", "2022-02-16 14:26:48.012577"], ["id", 4]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+[36m  Disk Storage (8.1ms) [0m[32mUploaded file to key: q9th38pahcuwyz27j3zmssiun8gm (checksum: HBXeNCwZZGx9HaeYKLtzmg==)[0m
+[36m  Disk Storage (2.7ms) [0m[32mUploaded file to key: tnygkf8jfv5rt7t76n4c4z0lov4s (checksum: 46haBEjXhf6B1sDk2sOMUg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7bf7d131-4110-4ee9-bc45-5324e2da2b6b) to Async(default) with arguments: #<GlobalID:0x000001f6333e5b40 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/1>>
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3df1836d-142f-4606-a7fd-6e1c5b84b628) to Async(default) with arguments: #<GlobalID:0x000001f62df71668 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b] Performing ActiveStorage::AnalyzeJob (Job ID: 7bf7d131-4110-4ee9-bc45-5324e2da2b6b) from Async(default) enqueued at 2022-02-16T14:26:48Z with arguments: #<GlobalID:0x000001f63052a210 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b] [36m  Disk Storage (2.9ms) [0m[34mDownloaded file from key: tnygkf8jfv5rt7t76n4c4z0lov4s[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b]   [1m[36mActiveStorage::Blob Update (0.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b]   [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7bf7d131-4110-4ee9-bc45-5324e2da2b6b] Performed ActiveStorage::AnalyzeJob (Job ID: 7bf7d131-4110-4ee9-bc45-5324e2da2b6b) from Async(default) in 44.4ms
+  Rendering layout layouts/mailer.html.erb
+  Rendering item_mailer/new_item_mailer.html.erb within layouts/mailer
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628] Performing ActiveStorage::AnalyzeJob (Job ID: 3df1836d-142f-4606-a7fd-6e1c5b84b628) from Async(default) enqueued at 2022-02-16T14:26:48Z with arguments: #<GlobalID:0x000001f6311ac920 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/2>>
+  Rendered item_mailer/new_item_mailer.html.erb within layouts/mailer (Duration: 7.7ms | Allocations: 1786)
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628] [36m  Disk Storage (3.3ms) [0m[34mDownloaded file from key: q9th38pahcuwyz27j3zmssiun8gm[0m
+  Rendered layout layouts/mailer.html.erb (Duration: 18.8ms | Allocations: 2097)
+  Rendering layout layouts/mailer.text.erb
+  Rendering item_mailer/new_item_mailer.text.erb within layouts/mailer
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628]   [1m[36mActiveStorage::Blob Update (0.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628]   [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3df1836d-142f-4606-a7fd-6e1c5b84b628] Performed ActiveStorage::AnalyzeJob (Job ID: 3df1836d-142f-4606-a7fd-6e1c5b84b628) from Async(default) in 34.92ms
+  Rendered item_mailer/new_item_mailer.text.erb within layouts/mailer (Duration: 17.4ms | Allocations: 3401)
+  Rendered layout layouts/mailer.text.erb (Duration: 24.0ms | Allocations: 3606)
+ItemMailer#new_item_mailer: processed outbound mail in 64.4ms
+Delivered mail 620d09a880a5a_505434f885056@Madyy.mail (10072.4ms)
+Date: Wed, 16 Feb 2022 16:26:48 +0200
+From: from@example.com
+To: ahmed@marsool.com
+Message-ID: <620d09a880a5a_505434f885056@Madyy.mail>
+Subject: You got a new Item!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_620d09a879956_505434f884980";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_620d09a879956_505434f884980
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello phone!
+===============================================
+
+Account details:
+--------------------------
+
+Name: phone
+Email: 1000
+
+----==_mimepart_620d09a879956_505434f884980
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello phone!</p>
+    <p>
+    Account details<br>
+    --------------------------
+    </p>
+    <p>Name: phone</p>
+    <p>Email: 1000</p>
+    
+    <p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_620d09a879956_505434f884980--
+
+[ActiveJob] Enqueued DailySummaryJob (Job ID: 7d3a012c-f1e5-4f37-9f66-a81eace775b9) to Async(default) with arguments: #<GlobalID:0x000001f631b42020 @uri=#<URI::GID gid://amazon-clone/Item/4>>
+Redirected to http://[::1]:3000/items/4
+Completed 302 Found in 10900ms (ActiveRecord: 7.8ms | Allocations: 105526)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:26:58 +0200
+[ActiveJob] [DailySummaryJob] [7d3a012c-f1e5-4f37-9f66-a81eace775b9]   [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [DailySummaryJob] [7d3a012c-f1e5-4f37-9f66-a81eace775b9] Performing DailySummaryJob (Job ID: 7d3a012c-f1e5-4f37-9f66-a81eace775b9) from Async(default) enqueued at 2022-02-16T14:26:58Z with arguments: #<GlobalID:0x000001f631b5a0f8 @uri=#<URI::GID gid://amazon-clone/Item/4>>
+[ActiveJob] [DailySummaryJob] [7d3a012c-f1e5-4f37-9f66-a81eace775b9] Error performing DailySummaryJob (Job ID: 7d3a012c-f1e5-4f37-9f66-a81eace775b9) from Async(default) in 3.42ms: ArgumentError (wrong number of arguments (given 1, expected 0)):
+C:/Users/20114/Desktop/Amazon_clone/app/jobs/daily_summary_job.rb:4:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:59:in `block in _perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/i18n-1.9.1/lib/i18n.rb:328:in `with_locale'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:138:in `run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:58:in `_perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:20:in `_perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:46:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:25:in `block in instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications.rb:206:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:35:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:14:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:18:in `block in perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:37:in `tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:99:in `tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:25:in `tag_logger'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:18:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:24:in `block in execute'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/reloader.rb:72:in `block in wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/reloader.rb:71:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:138:in `run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:22:in `execute'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Processing by ItemsController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/_item.html.erb (Duration: 0.2ms | Allocations: 30)
+  Rendered items/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 944)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 3204)
+Completed 200 OK in 19ms (Views: 14.1ms | ActiveRecord: 0.2ms | Allocations: 4134)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:27:46 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (Duration: 24.2ms | Allocations: 5192)
+  Rendered layout layouts/application.html.erb (Duration: 25.1ms | Allocations: 5280)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.1ms | Allocations: 6926)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `item' for #<ActionView::Base:0x0000000000c9e0>
+Did you mean?  @item):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delet_attachment_item_url(item.cover.id) %>
+    5: 
+    6:   <% item.uploads.each do |i| %>
+  
+app/views/items/show.html.erb:3
+Started GET "/items/4" for ::1 at 2022-02-16 16:28:28 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 55.7ms | Allocations: 8340)
+  Rendered layout layouts/application.html.erb (Duration: 56.9ms | Allocations: 8428)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.7ms | Allocations: 10108)
+
+
+  
+ActionView::Template::Error (undefined method `delet_attachment_item_url' for #<ActionView::Base:0x0000000000cd50>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delet_attachment_item_url(@item.cover.id) %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:28:53 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 48.3ms | Allocations: 7432)
+  Rendered layout layouts/application.html.erb (Duration: 49.4ms | Allocations: 7520)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.6ms | Allocations: 9163)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_item_url' for #<ActionView::Base:0x0000000000d0e8>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_item_url(@item.cover.id) %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:29:13 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 59.2ms | Allocations: 24988)
+  Rendered layout layouts/application.html.erb (Duration: 60.1ms | Allocations: 25085)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 2.8ms | Allocations: 34847)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_item_url' for #<ActionView::Base:0x00000000011cd8>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_item_url(@item.cover.id) %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:29:36 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 43.6ms | Allocations: 7434)
+  Rendered layout layouts/application.html.erb (Duration: 44.7ms | Allocations: 7522)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 0.5ms | Allocations: 9203)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_item_url' for #<ActionView::Base:0x00000000012020>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_item_url(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:30:07 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:6
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:7
+  Rendered items/_item.html.erb (Duration: 6.2ms | Allocations: 221)
+  Rendered items/show.html.erb within layouts/application (Duration: 44.0ms | Allocations: 5810)
+  Rendered layout layouts/application.html.erb (Duration: 72.6ms | Allocations: 20070)
+Completed 200 OK in 83ms (Views: 77.0ms | ActiveRecord: 0.9ms | Allocations: 21745)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8016c202089690aa7aa02e2bb5bc3708170898d/download.jpg" for ::1 at 2022-02-16 16:30:07 +0200
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5effce0e8bdfae4ccaa86b9c4dd6a830660c91d1/Screenshot%20(45).png" for ::1 at 2022-02-16 16:30:07 +0200
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8016c202089690aa7aa02e2bb5bc3708170898d", "filename"=>"download"}
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5effce0e8bdfae4ccaa86b9c4dd6a830660c91d1", "filename"=>"Screenshot (45)"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (1.9ms) [0m[34mGenerated URL for file at key: tnygkf8jfv5rt7t76n4c4z0lov4s (http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6MzU6MDcuNzExWiIsInB1ciI6ImJsb2Jfa2V5In19--158930499f9316f48930ee55a77cc7f1ceb16c05/download.jpg)[0m
+Redirected to http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6MzU6MDcuNzExWiIsInB1ciI6ImJsb2Jfa2V5In19--158930499f9316f48930ee55a77cc7f1ceb16c05/download.jpg
+Completed 302 Found in 25ms (ActiveRecord: 0.2ms | Allocations: 3515)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: q9th38pahcuwyz27j3zmssiun8gm (http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDozNTowNy43MjFaIiwicHVyIjoiYmxvYl9rZXkifX0=--9ce25f072c7f3d38a4b422e51bfd720138a538f8/Screenshot%20(45).png)[0m
+Redirected to http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDozNTowNy43MjFaIiwicHVyIjoiYmxvYl9rZXkifX0=--9ce25f072c7f3d38a4b422e51bfd720138a538f8/Screenshot%20(45).png
+Completed 302 Found in 31ms (ActiveRecord: 0.6ms | Allocations: 5210)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6MzU6MDcuNzExWiIsInB1ciI6ImJsb2Jfa2V5In19--158930499f9316f48930ee55a77cc7f1ceb16c05/download.jpg" for ::1 at 2022-02-16 16:30:07 +0200
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDozNTowNy43MjFaIiwicHVyIjoiYmxvYl9rZXkifX0=--9ce25f072c7f3d38a4b422e51bfd720138a538f8/Screenshot%20(45).png" for ::1 at 2022-02-16 16:30:07 +0200
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"download"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 374)
+
+
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"Screenshot (45)"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/items" for ::1 at 2022-02-16 16:30:12 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/items/index.html.erb:6
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 2742)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 5087)
+Completed 200 OK in 25ms (Views: 21.6ms | ActiveRecord: 0.6ms | Allocations: 5600)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:30:51 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:6
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:7
+  Rendered items/_item.html.erb (Duration: 0.8ms | Allocations: 211)
+  Rendered items/show.html.erb within layouts/application (Duration: 33.1ms | Allocations: 6288)
+  Rendered layout layouts/application.html.erb (Duration: 39.8ms | Allocations: 8841)
+Completed 200 OK in 49ms (Views: 43.7ms | ActiveRecord: 0.9ms | Allocations: 10536)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:30:53 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:6
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:7
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 10.8ms | Allocations: 4706)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 6904)
+Completed 200 OK in 22ms (Views: 17.2ms | ActiveRecord: 1.1ms | Allocations: 7765)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:32:31 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 71.3ms | Allocations: 25046)
+  Rendered layout layouts/application.html.erb (Duration: 72.2ms | Allocations: 25143)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 3.1ms | Allocations: 34896)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x00000000016e68>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_items_url(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:36:59 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 50.0ms | Allocations: 7539)
+  Rendered layout layouts/application.html.erb (Duration: 51.0ms | Allocations: 7627)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.6ms | Allocations: 9308)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_path' for #<ActionView::Base:0x000000000174f8>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_items_path(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:37:43 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 43.3ms | Allocations: 7479)
+  Rendered layout layouts/application.html.erb (Duration: 44.4ms | Allocations: 7567)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 0.4ms | Allocations: 9205)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_item_path' for #<ActionView::Base:0x00000000017908>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_item_path(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:39:40 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 74.4ms | Allocations: 25042)
+  Rendered layout layouts/application.html.erb (Duration: 75.3ms | Allocations: 25139)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 3.4ms | Allocations: 34894)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001c2a0>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_items_url(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:40:29 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 36.4ms | Allocations: 7058)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 7146)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.4ms | Allocations: 8827)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment' for #<ActionView::Base:0x0000000001c610>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:42:43 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 45.4ms | Allocations: 7483)
+  Rendered layout layouts/application.html.erb (Duration: 46.4ms | Allocations: 7571)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.5ms | Allocations: 9209)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001c980>):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to_function "Delete", delete_attachment_items_url(@item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:47:28 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 33.1ms | Allocations: 7295)
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 7383)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 0.5ms | Allocations: 9021)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `item' for #<ActionView::Base:0x0000000001ccf0>
+Did you mean?  @item):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete", delete_attachment_items_url(item.cover.id), method: :delete %>
+    5: 
+    6:   <% @item.uploads.each do |i| %>
+    7:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/show.html.erb:4
+Started GET "/items/4" for ::1 at 2022-02-16 16:48:06 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:6
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:7
+  Rendered items/show.html.erb within layouts/application (Duration: 49.2ms | Allocations: 9530)
+  Rendered layout layouts/application.html.erb (Duration: 50.1ms | Allocations: 9618)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.9ms | Allocations: 11256)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001d038>):
+     5: 
+     6:   <% @item.uploads.each do |i| %>
+     7:     <%= image_tag(i, size: "200x200") %>
+     8:     <%= link_to "Delete", delete_attachment_items_url(i) %>
+     9:   <% end %>
+    10: 
+    11: <%= render @item %>
+  
+app/views/items/show.html.erb:8
+app/views/items/show.html.erb:6
+Started GET "/items/4" for ::1 at 2022-02-16 16:49:19 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/_item.html.erb (Duration: 29.4ms | Allocations: 4927)
+  Rendered items/show.html.erb within layouts/application (Duration: 39.7ms | Allocations: 8110)
+  Rendered layout layouts/application.html.erb (Duration: 40.6ms | Allocations: 8198)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 0.5ms | Allocations: 9836)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001d4e8>):
+     8:     <strong>Price:</strong>
+     9:     <%= item.price %>
+    10:   </p>
+    11:   <%= link_to "Delete", delete_attachment_items_url(item.cover.id), method: :delete %>
+    12: 
+    13:   <% item.uploads.each do |i| %>
+    14:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/_item.html.erb:11
+app/views/items/show.html.erb:8
+Started GET "/items" for ::1 at 2022-02-16 16:49:29 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/_item.html.erb:11
+  Rendered items/_item.html.erb (Duration: 18.1ms | Allocations: 5985)
+  Rendered items/index.html.erb within layouts/application (Duration: 22.2ms | Allocations: 7433)
+  Rendered layout layouts/application.html.erb (Duration: 23.0ms | Allocations: 7515)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.6ms | Allocations: 7937)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001d858>):
+     8:     <strong>Price:</strong>
+     9:     <%= item.price %>
+    10:   </p>
+    11:   <%= link_to "Delete", delete_attachment_items_url(item.cover.id), method: :delete %>
+    12: 
+    13:   <% item.uploads.each do |i| %>
+    14:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/_item.html.erb:11
+app/views/items/index.html.erb:7
+app/views/items/index.html.erb:6
+Started GET "/items" for ::1 at 2022-02-16 16:50:07 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/_item.html.erb:12
+  Rendered items/_item.html.erb (Duration: 32.0ms | Allocations: 6377)
+  Rendered items/index.html.erb within layouts/application (Duration: 36.6ms | Allocations: 8045)
+  Rendered layout layouts/application.html.erb (Duration: 37.4ms | Allocations: 8133)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.3ms | Allocations: 9268)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001dba0>):
+     9:     <%= item.price %>
+    10:   </p>
+    11:   
+    12:   <%= link_to "Delete", delete_attachment_items_url(item.cover.id), method: :delete %>
+    13: 
+    14:   <% item.uploads.each do |i| %>
+    15:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/_item.html.erb:12
+app/views/items/index.html.erb:7
+app/views/items/index.html.erb:6
+Started GET "/items" for ::1 at 2022-02-16 16:50:12 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/_item.html.erb:12
+  Rendered items/_item.html.erb (Duration: 16.8ms | Allocations: 5967)
+  Rendered items/index.html.erb within layouts/application (Duration: 20.1ms | Allocations: 7131)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 7213)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.4ms | Allocations: 7556)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001dee8>):
+     9:     <%= item.price %>
+    10:   </p>
+    11:   
+    12:   <%= link_to "Delete", delete_attachment_items_url(item.cover.id), method: :delete %>
+    13: 
+    14:   <% item.uploads.each do |i| %>
+    15:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/_item.html.erb:12
+app/views/items/index.html.erb:7
+app/views/items/index.html.erb:6
+Started GET "/items" for ::1 at 2022-02-16 16:50:14 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/_item.html.erb:12
+  Rendered items/_item.html.erb (Duration: 18.6ms | Allocations: 5967)
+  Rendered items/index.html.erb within layouts/application (Duration: 21.6ms | Allocations: 7131)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 7213)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.3ms | Allocations: 7538)
+
+
+  
+ActionView::Template::Error (undefined method `delete_attachment_items_url' for #<ActionView::Base:0x0000000001e1e0>):
+     9:     <%= item.price %>
+    10:   </p>
+    11:   
+    12:   <%= link_to "Delete", delete_attachment_items_url(item.cover.id), method: :delete %>
+    13: 
+    14:   <% item.uploads.each do |i| %>
+    15:     <%= image_tag(i, size: "200x200") %>
+  
+app/views/items/_item.html.erb:12
+app/views/items/index.html.erb:7
+app/views/items/index.html.erb:6
+Started GET "/items" for ::1 at 2022-02-16 16:52:46 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 2.6ms | Allocations: 213)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2367)
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 16668)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 0.2ms | Allocations: 17841)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:52:47 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 13.3ms | Allocations: 5788)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 7986)
+Completed 200 OK in 26ms (Views: 19.9ms | ActiveRecord: 0.7ms | Allocations: 8939)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8016c202089690aa7aa02e2bb5bc3708170898d/download.jpg" for ::1 at 2022-02-16 16:52:48 +0200
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5effce0e8bdfae4ccaa86b9c4dd6a830660c91d1/Screenshot%20(45).png" for ::1 at 2022-02-16 16:52:48 +0200
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5effce0e8bdfae4ccaa86b9c4dd6a830660c91d1", "filename"=>"Screenshot (45)"}
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8016c202089690aa7aa02e2bb5bc3708170898d", "filename"=>"download"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: q9th38pahcuwyz27j3zmssiun8gm (http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDo1Nzo0OC4xNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--91dc500a21650d523677b63937b8fb5618f8fd24/Screenshot%20(45).png)[0m
+Redirected to http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDo1Nzo0OC4xNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--91dc500a21650d523677b63937b8fb5618f8fd24/Screenshot%20(45).png
+Completed 302 Found in 10ms (ActiveRecord: 0.2ms | Allocations: 2748)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: tnygkf8jfv5rt7t76n4c4z0lov4s (http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6NTc6NDguMTcxWiIsInB1ciI6ImJsb2Jfa2V5In19--318f2a8e8e192dd89bf243d64377429faccf1346/download.jpg)[0m
+Redirected to http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6NTc6NDguMTcxWiIsInB1ciI6ImJsb2Jfa2V5In19--318f2a8e8e192dd89bf243d64377429faccf1346/download.jpg
+Completed 302 Found in 14ms (ActiveRecord: 0.6ms | Allocations: 4402)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDo1Nzo0OC4xNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--91dc500a21650d523677b63937b8fb5618f8fd24/Screenshot%20(45).png" for ::1 at 2022-02-16 16:52:48 +0200
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6NTc6NDguMTcxWiIsInB1ciI6ImJsb2Jfa2V5In19--318f2a8e8e192dd89bf243d64377429faccf1346/download.jpg" for ::1 at 2022-02-16 16:52:48 +0200
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"Screenshot (45)"}
+Completed 200 OK in 3ms (ActiveRecord: 0.0ms | Allocations: 346)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"download"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:52:50 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered items/show.html.erb within layouts/application (Duration: 10.3ms | Allocations: 5112)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 7409)
+Completed 200 OK in 23ms (Views: 16.6ms | ActiveRecord: 1.3ms | Allocations: 8914)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:52:51 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4801)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 6999)
+Completed 200 OK in 20ms (Views: 16.3ms | ActiveRecord: 0.7ms | Allocations: 7832)
+
+
+Started GET "/items" for ::1 at 2022-02-16 16:53:03 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1620)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3786)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.2ms | Allocations: 4149)
+
+
+Started GET "/items/3" for ::1 at 2022-02-16 16:53:07 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 3574)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3656)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms | Allocations: 4462)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete" %>
+    5:   <%# , delete_attachment_items_url(@item.cover.id), method: :delete %>
+    6: 
+  
+app/views/items/show.html.erb:3
+Started GET "/items" for ::1 at 2022-02-16 16:53:10 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1612)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 3793)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.2ms | Allocations: 4152)
+
+
+Started GET "/items/1" for ::1 at 2022-02-16 16:53:12 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3564)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3646)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms | Allocations: 4446)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete" %>
+    5:   <%# , delete_attachment_items_url(@item.cover.id), method: :delete %>
+    6: 
+  
+app/views/items/show.html.erb:3
+Started GET "/items" for ::1 at 2022-02-16 16:53:14 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1627)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 3808)
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.2ms | Allocations: 4167)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:53:25 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4793)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 6991)
+Completed 200 OK in 21ms (Views: 16.5ms | ActiveRecord: 0.7ms | Allocations: 7824)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkRzU1WjJ0bU9HcG1kalZ5ZERkME56WnVOR00wZWpCc2IzWTBjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SdmQyNXNiMkZrTG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25aRzkzYm14dllXUXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6IjIwMjItMDItMTZUMTQ6NTc6NDguMTcxWiIsInB1ciI6ImJsb2Jfa2V5In19--318f2a8e8e192dd89bf243d64377429faccf1346/download.jpg" for ::1 at 2022-02-16 16:53:25 +0200
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjVGwwYURNNGNHRm9ZM1YzZVhveU4yb3plbTF6YzJsMWJqaG5iUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNDo1Nzo0OC4xNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--91dc500a21650d523677b63937b8fb5618f8fd24/Screenshot%20(45).png" for ::1 at 2022-02-16 16:53:25 +0200
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"download"}
+Completed 304 Not Modified in 4ms (ActiveRecord: 0.0ms | Allocations: 226)
+
+
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"Screenshot (45)"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 215)
+
+
+Started GET "/items/4/edit" for ::1 at 2022-02-16 16:53:27 +0200
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/edit.html.erb within layouts/application
+  Rendered items/_form.html.erb (Duration: 2.8ms | Allocations: 2169)
+  Rendered items/edit.html.erb within layouts/application (Duration: 14.5ms | Allocations: 2534)
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 4679)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 0.1ms | Allocations: 5566)
+
+
+Started PATCH "/items/4" for ::1 at 2022-02-16 16:53:37 +0200
+Processing by ItemsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "item"=>{"name"=>"bird", "price"=>"1000", "uploads"=>[""]}, "commit"=>"Update Item", "id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+  [1m[36mItem Update (0.9ms)[0m  [1m[33mUPDATE "items" SET "name" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["name", "bird"], ["updated_at", "2022-02-16 14:53:37.830939"], ["id", 4]]
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+  [1m[36mActiveStorage::Attachment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+  [1m[36mItem Update (0.1ms)[0m  [1m[33mUPDATE "items" SET "updated_at" = ? WHERE "items"."id" = ?[0m  [["updated_at", "2022-02-16 14:53:37.840138"], ["id", 4]]
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:43:in `block in update'
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 13ebbda2-8c9d-4a2d-936f-3bf0a399a63b) to Async(default) with arguments: #<GlobalID:0x000001f632158798 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/2>>
+Redirected to http://[::1]:3000/items/4
+Completed 302 Found in 76ms (ActiveRecord: 6.3ms | Allocations: 12730)
+
+
+Started GET "/items/4" for ::1 at 2022-02-16 16:53:37 +0200
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b] Performing ActiveStorage::PurgeJob (Job ID: 13ebbda2-8c9d-4a2d-936f-3bf0a399a63b) from Async(default) enqueued at 2022-02-16T14:53:37Z with arguments: #<GlobalID:0x000001f632469068 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ? LIMIT ?[0m  [["blob_id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ?[0m  [["blob_id", 2]]
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mActiveStorage::Blob Destroy (0.8ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ?[0m  [["id", 2]]
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b]   [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b] [36m  Disk Storage (0.3ms) [0m[31mDeleted file from key: q9th38pahcuwyz27j3zmssiun8gm[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b] [36m  Disk Storage (0.4ms) [0m[31mDeleted files by key prefix: variants/q9th38pahcuwyz27j3zmssiun8gm/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [13ebbda2-8c9d-4a2d-936f-3bf0a399a63b] Performed ActiveStorage::PurgeJob (Job ID: 13ebbda2-8c9d-4a2d-936f-3bf0a399a63b) from Async(default) in 44.24ms
+Processing by ItemsController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 4], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 37)
+  Rendered items/show.html.erb within layouts/application (Duration: 7.9ms | Allocations: 4048)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 6346)
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.5ms | Allocations: 7286)
+
+
+Started GET "/items" for ::1 at 2022-02-16 16:53:53 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1599)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3765)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.2ms | Allocations: 4128)
+
+
+Started GET "/items/2" for ::1 at 2022-02-16 16:54:23 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  Rendered items/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 3572)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3654)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms | Allocations: 4460)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= image_tag(@item.cover, size: "200x200") %>
+    4:   <%= link_to "Delete" %>
+    5:   <%# , delete_attachment_items_url(@item.cover.id), method: :delete %>
+    6: 
+  
+app/views/items/show.html.erb:3
+Started GET "/items" for ::1 at 2022-02-16 16:54:25 +0200
+Processing by ItemsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:6
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered items/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1609)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 3790)
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 0.2ms | Allocations: 4149)
+
+
+Started GET "/items/new" for ::1 at 2022-02-16 16:54:27 +0200
+Processing by ItemsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (Duration: 1.9ms | Allocations: 1588)
+  Rendered items/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1852)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 4005)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 0.0ms | Allocations: 4436)
+
+
+Started POST "/items" for ::1 at 2022-02-16 16:55:00 +0200
+Processing by ItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "item"=>{"name"=>"bag", "price"=>"500", "cover"=>#<ActionDispatch::Http::UploadedFile:0x000001f630fdb0b0 @tempfile=#<Tempfile:C:/Users/20114/AppData/Local/Temp/RackMultipart20220216-20564-ud9ai9.jpg>, @original_filename="41NPTrHO+1L._AC_.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"item[cover]\"; filename=\"41NPTrHO+1L._AC_.jpg\"\r\nContent-Type: image/jpeg\r\n">, "uploads"=>["", #<ActionDispatch::Http::UploadedFile:0x000001f630fdb010 @tempfile=#<Tempfile:C:/Users/20114/AppData/Local/Temp/RackMultipart20220216-20564-84l0tb.png>, @original_filename="Screenshot (45).png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"item[uploads][]\"; filename=\"Screenshot (45).png\"\r\nContent-Type: image/png\r\n">]}, "commit"=>"Create Item"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mItem Create (0.9ms)[0m  [1m[32mINSERT INTO "items" ("name", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "bag"], ["price", 500], ["created_at", "2022-02-16 14:55:00.631585"], ["updated_at", "2022-02-16 14:55:00.631585"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "5v8t9cu3yhztk6d7tmq3la8hug9b"], ["filename", "41NPTrHO+1L._AC_.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 18553], ["checksum", "UEZYWGQsseiEOVCCjNtVtQ=="], ["created_at", "2022-02-16 14:55:00.641792"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cover"], ["record_type", "Item"], ["record_id", 5], ["blob_id", 3], ["created_at", "2022-02-16 14:55:00.644686"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Blob Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "2d23qfjgkowaks6aqo5rikqw30yc"], ["filename", "Screenshot (45).png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 268950], ["checksum", "HBXeNCwZZGx9HaeYKLtzmg=="], ["created_at", "2022-02-16 14:55:00.648229"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "uploads"], ["record_type", "Item"], ["record_id", 5], ["blob_id", 4], ["created_at", "2022-02-16 14:55:00.651093"]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mItem Update (0.1ms)[0m  [1m[33mUPDATE "items" SET "updated_at" = ? WHERE "items"."id" = ?[0m  [["updated_at", "2022-02-16 14:55:00.653489"], ["id", 5]]
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/items_controller.rb:27:in `block in create'
+[36m  Disk Storage (7.5ms) [0m[32mUploaded file to key: 2d23qfjgkowaks6aqo5rikqw30yc (checksum: HBXeNCwZZGx9HaeYKLtzmg==)[0m
+[36m  Disk Storage (7.7ms) [0m[32mUploaded file to key: 5v8t9cu3yhztk6d7tmq3la8hug9b (checksum: UEZYWGQsseiEOVCCjNtVtQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 93a75eb7-adc3-4340-813a-208a7841333f) to Async(default) with arguments: #<GlobalID:0x000001f631af9280 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/3>>
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a4596e84-275e-44d9-a23c-bec1b3a44e9c) to Async(default) with arguments: #<GlobalID:0x000001f631ae3408 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/4>>
+  Rendering layout layouts/mailer.html.erb
+  Rendering item_mailer/new_item_mailer.html.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.html.erb within layouts/mailer (Duration: 1.5ms | Allocations: 251)
+  Rendered layout layouts/mailer.html.erb (Duration: 3.3ms | Allocations: 524)
+  Rendering layout layouts/mailer.text.erb
+  Rendering item_mailer/new_item_mailer.text.erb within layouts/mailer
+  Rendered item_mailer/new_item_mailer.text.erb within layouts/mailer (Duration: 0.7ms | Allocations: 175)
+  Rendered layout layouts/mailer.text.erb (Duration: 1.8ms | Allocations: 392)
+ItemMailer#new_item_mailer: processed outbound mail in 13.9ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f] Performing ActiveStorage::AnalyzeJob (Job ID: 93a75eb7-adc3-4340-813a-208a7841333f) from Async(default) enqueued at 2022-02-16T14:55:00Z with arguments: #<GlobalID:0x000001f632034538 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f] [36m  Disk Storage (2.6ms) [0m[34mDownloaded file from key: 5v8t9cu3yhztk6d7tmq3la8hug9b[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f]   [1m[36mActiveStorage::Blob Update (1.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f]   [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [93a75eb7-adc3-4340-813a-208a7841333f] Performed ActiveStorage::AnalyzeJob (Job ID: 93a75eb7-adc3-4340-813a-208a7841333f) from Async(default) in 27.52ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c] Performing ActiveStorage::AnalyzeJob (Job ID: a4596e84-275e-44d9-a23c-bec1b3a44e9c) from Async(default) enqueued at 2022-02-16T14:55:00Z with arguments: #<GlobalID:0x000001f6324693d8 @uri=#<URI::GID gid://amazon-clone/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c] [36m  Disk Storage (2.2ms) [0m[34mDownloaded file from key: 2d23qfjgkowaks6aqo5rikqw30yc[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c]   [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4596e84-275e-44d9-a23c-bec1b3a44e9c] Performed ActiveStorage::AnalyzeJob (Job ID: a4596e84-275e-44d9-a23c-bec1b3a44e9c) from Async(default) in 26.92ms
+Delivered mail 620d1044b3f98_5054350c852f8@Madyy.mail (10007.0ms)
+Date: Wed, 16 Feb 2022 16:55:00 +0200
+From: from@example.com
+To: ahmed@marsool.com
+Message-ID: <620d1044b3f98_5054350c852f8@Madyy.mail>
+Subject: You got a new Item!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_620d1044b3461_5054350c851fd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_620d1044b3461_5054350c851fd
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello bag!
+===============================================
+
+Account details:
+--------------------------
+
+Name: bag
+Email: 500
+
+----==_mimepart_620d1044b3461_5054350c851fd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello bag!</p>
+    <p>
+    Account details<br>
+    --------------------------
+    </p>
+    <p>Name: bag</p>
+    <p>Email: 500</p>
+    
+    <p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_620d1044b3461_5054350c851fd--
+
+[ActiveJob] Enqueued DailySummaryJob (Job ID: cbe57e96-8b74-4e36-a938-865a1433d687) to Async(default) with arguments: #<GlobalID:0x000001f6325ced18 @uri=#<URI::GID gid://amazon-clone/Item/5>>
+Redirected to http://[::1]:3000/items/5
+Completed 302 Found in 10144ms (ActiveRecord: 6.2ms | Allocations: 46106)
+
+
+Started GET "/items/5" for ::1 at 2022-02-16 16:55:10 +0200
+[ActiveJob] [DailySummaryJob] [cbe57e96-8b74-4e36-a938-865a1433d687]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [DailySummaryJob] [cbe57e96-8b74-4e36-a938-865a1433d687] Performing DailySummaryJob (Job ID: cbe57e96-8b74-4e36-a938-865a1433d687) from Async(default) enqueued at 2022-02-16T14:55:10Z with arguments: #<GlobalID:0x000001f632828848 @uri=#<URI::GID gid://amazon-clone/Item/5>>
+[ActiveJob] [DailySummaryJob] [cbe57e96-8b74-4e36-a938-865a1433d687] Error performing DailySummaryJob (Job ID: cbe57e96-8b74-4e36-a938-865a1433d687) from Async(default) in 3.57ms: ArgumentError (wrong number of arguments (given 1, expected 0)):
+C:/Users/20114/Desktop/Amazon_clone/app/jobs/daily_summary_job.rb:4:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:59:in `block in _perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/i18n-1.9.1/lib/i18n.rb:328:in `with_locale'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:138:in `run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:58:in `_perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:20:in `_perform_job'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:46:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:25:in `block in instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/notifications.rb:206:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:35:in `instrument'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/instrumentation.rb:14:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:18:in `block in perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:37:in `tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/tagged_logging.rb:99:in `tagged'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:25:in `tag_logger'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/logging.rb:18:in `perform_now'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:24:in `block in execute'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/reloader.rb:72:in `block in wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/reloader.rb:71:in `wrap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `instance_exec'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activesupport-7.0.2.2/lib/active_support/callbacks.rb:138:in `run_callbacks'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/execution.rb:22:in `execute'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/activejob-7.0.2.2/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Processing by ItemsController#show as TURBO_STREAM
+  Parameters: {"id"=>"5"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 37)
+  Rendered items/show.html.erb within layouts/application (Duration: 11.2ms | Allocations: 4964)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 7259)
+Completed 200 OK in 22ms (Views: 17.8ms | ActiveRecord: 0.9ms | Allocations: 8144)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b2fd1e579c31992ffc4126e0337481ac8e5a041/41NPTrHO+1L._AC_.jpg" for ::1 at 2022-02-16 16:55:10 +0200
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a60caf76683de04d0c2f1ef066cc4c3a6c694577/Screenshot%20(45).png" for ::1 at 2022-02-16 16:55:10 +0200
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b2fd1e579c31992ffc4126e0337481ac8e5a041", "filename"=>"41NPTrHO+1L._AC_"}
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: 5v8t9cu3yhztk6d7tmq3la8hug9b (http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOWFk0ZERsamRUTjVhSHAwYXpaa04zUnRjVE5zWVRob2RXYzVZZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpReFRsQlVja2hQS3pGTUxsOUJRMTh1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5YzBNVTVRVkhKSVR5c3hUQzVmUVVOZkxtcHdad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0wMi0xNlQxNTowMDoxMC45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--45c2d2f7faa5ca752c67355fee4e6b9feed2ed9f/41NPTrHO+1L._AC_.jpg)[0m
+Redirected to http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOWFk0ZERsamRUTjVhSHAwYXpaa04zUnRjVE5zWVRob2RXYzVZZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpReFRsQlVja2hQS3pGTUxsOUJRMTh1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5YzBNVTVRVkhKSVR5c3hUQzVmUVVOZkxtcHdad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0wMi0xNlQxNTowMDoxMC45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--45c2d2f7faa5ca752c67355fee4e6b9feed2ed9f/41NPTrHO+1L._AC_.jpg
+Completed 302 Found in 9ms (ActiveRecord: 0.3ms | Allocations: 1345)
+
+
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a60caf76683de04d0c2f1ef066cc4c3a6c694577", "filename"=>"Screenshot (45)"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: 2d23qfjgkowaks6aqo5rikqw30yc (http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNbVF5TTNGbWFtZHJiM2RoYTNNMllYRnZOWEpwYTNGM016QjVZd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNTowMDoxMS4wMDdaIiwicHVyIjoiYmxvYl9rZXkifX0=--03ac5a3e6b7c7a0d2fc72871fc8534844b6107fe/Screenshot%20(45).png)[0m
+Redirected to http://[::1]:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNbVF5TTNGbWFtZHJiM2RoYTNNMllYRnZOWEpwYTNGM016QjVZd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNTowMDoxMS4wMDdaIiwicHVyIjoiYmxvYl9rZXkifX0=--03ac5a3e6b7c7a0d2fc72871fc8534844b6107fe/Screenshot%20(45).png
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms | Allocations: 1331)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOWFk0ZERsamRUTjVhSHAwYXpaa04zUnRjVE5zWVRob2RXYzVZZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpReFRsQlVja2hQS3pGTUxsOUJRMTh1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5YzBNVTVRVkhKSVR5c3hUQzVmUVVOZkxtcHdad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0wMi0xNlQxNTowMDoxMC45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--45c2d2f7faa5ca752c67355fee4e6b9feed2ed9f/41NPTrHO+1L._AC_.jpg" for ::1 at 2022-02-16 16:55:11 +0200
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNbVF5TTNGbWFtZHJiM2RoYTNNMllYRnZOWEpwYTNGM016QjVZd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOamNtVmxibk5vYjNRZ0pUSTRORFVsTWprdWNHNW5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRUWTNKbFpXNXphRzkwSlRJd0pUSTRORFVsTWprdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wMi0xNlQxNTowMDoxMS4wMDdaIiwicHVyIjoiYmxvYl9rZXkifX0=--03ac5a3e6b7c7a0d2fc72871fc8534844b6107fe/Screenshot%20(45).png" for ::1 at 2022-02-16 16:55:11 +0200
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"41NPTrHO+1L._AC_"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"Screenshot (45)"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/items/5" for ::1 at 2022-02-16 16:55:14 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 4785)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 6983)
+Completed 200 OK in 23ms (Views: 18.0ms | ActiveRecord: 0.8ms | Allocations: 7816)
+
+
+Started GET "/items/5" for ::1 at 2022-02-16 16:55:17 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 15.7ms | Allocations: 4786)
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 6999)
+Completed 200 OK in 27ms (Views: 22.5ms | ActiveRecord: 0.7ms | Allocations: 7832)
+
+
+Started GET "/items/5" for ::1 at 2022-02-16 16:55:18 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4771)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 6982)
+Completed 200 OK in 21ms (Views: 17.1ms | ActiveRecord: 0.7ms | Allocations: 7815)
+
+
+Started GET "/items/5" for ::1 at 2022-02-16 16:55:21 +0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:72:in `set_item'
+  Rendering layout layouts/application.html.erb
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 5], ["record_type", "Item"], ["name", "uploads"]]
+  ↳ app/views/items/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/items/show.html.erb:8
+  Rendered items/_item.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered items/show.html.erb within layouts/application (Duration: 10.0ms | Allocations: 4791)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 6991)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.7ms | Allocations: 7824)
+
+
