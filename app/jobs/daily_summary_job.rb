@@ -1,7 +1,9 @@
 class DailySummaryJob < ApplicationJob
   queue_as :default
 
-  def perform()
-    DailyMailer.daily_mailer(@user, @item).deliver_now
+  def perform(item)
+    
+    ItemMailer.with(item: item).new_item_mailer.deliver_now
+
   end
 end

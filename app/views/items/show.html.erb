@@ -1,13 +1,14 @@
 <p style="color: green"><%= notice %></p>
-
-<%= image_tag(@item.cover, size: "200x200") %>
-  <%= link_to "Delete" %>
-  <%# , delete_attachment_items_url(@item.cover.id), method: :delete %>
-
-  <% @item.uploads.each do |i| %>
-    <%= image_tag(i, size: "200x200") %>
-    <%= link_to "Delete" %>
-    <%# , delete_attachment_items_url(i) %>
+  <% if @item.cover.representable? %>
+    <%= image_tag(@item.cover, size: "200x200") %>
+      <%= link_to "Delete", delete_attachment_items_path(@item.cover.id) %>
+  <%end%>
+  
+  <% @item.uploads.each do |x| %>
+    <% if x.representable? %>
+      <%= image_tag(x, size: "200x200") %>
+      <%= link_to "Delete", delete_attachment_items_path(x) %>
+    <% end %>
   <% end %>
 
 <%= render @item %>
